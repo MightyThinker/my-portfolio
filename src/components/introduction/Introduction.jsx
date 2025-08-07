@@ -1,16 +1,35 @@
 import React from 'react'
 import './Introduction.css';
 import SpeechBubble from './SpeechBubble';
+import { motion } from 'motion/react';
 
 export default function Introduction() {
+
+  // Follow Social Profile Variants
+  const followVariants = {
+    initial : {
+      y : -100,
+      opacity:0,
+    },
+    animate : {
+      y : 0,
+      opacity : 1,
+      transition : {
+        duration : 1,
+        staggerChildren : 0.2,
+        ease: "backIn",
+      }
+    }
+  };
+
   return (
     <div className="introduction">
 
       {/* Left Section */}
-      <div className="iSection left">
+      <motion.div animate={{ x:[-100,0]}} transition={{ duration: 1,ease: "easeInOut" }} className="iSection left">
 
         {/* Intro */}
-        <h1 className="iTitle">
+        <h1 animate={{ x:[-100,0]}} transition={{ duration: 1,ease: "easeInOut" }} className="iTitle">
           I'm <br/>
           <span>Pratyush Kumar!</span>
         </h1>
@@ -24,50 +43,53 @@ export default function Introduction() {
         </div>
 
         {/* Scroll bar */}
-        <a href='#skills' className='scroll'>
+        <motion.a animate={{ y:[0,5], opacity:[0,1,0]}} transition={{ duration: 4, ease: "easeInOut", repeat: Infinity}} href='#skills' className='scroll'>
           <svg width="32" height="56" viewBox="0 0 32 56" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="1" y="1" width="30" height="54" rx="15" stroke="#999" stroke-width="2"/> {/* Outer rect circle */}
-            <rect x="14" y="9" width="4" height="9" rx="2" fill="#999"/> {/* Inner scroll wheel */}
+            <motion.rect animate={{y:[0,9]}} transition={{ duration: 4, ease: "easeInOut", repeat: Infinity}} x="14" y="9" width="4" height="9" rx="2" fill="#999"/> {/* Inner scroll wheel */}
           </svg>
-        </a>
-      </div>
+        </motion.a>
+      </motion.div>
 
       {/* Right Section */}
-      <div className="iSection right">
+      <motion.div animate={{ x:[100,0]}} transition={{ duration: 1,ease: "easeInOut" }} className="iSection right">
 
         {/* Social Profile Section */}
-        <div className="social-prof">
-          <a href="https://www.linkedin.com/in/mighty-thinker/" target="_blank" rel="noopener noreferrer">
+        <motion.div variants={followVariants} initial="initial" animate="animate" className="social-prof">
+          <motion.a variants={followVariants} href="https://www.linkedin.com/in/mighty-thinker/" target="_blank" rel="noopener noreferrer">
             <img src='https://img.icons8.com/fluency/30/linkedin.png' alt='LinkedIn' />
-          </a>
-          <a href="https://github.com/MightyThinker" target="_blank" rel="noopener noreferrer">
-          <img src='https://img.icons8.com/fluency/30/github.png' alt='GitHub' />
-          </a>
-          <a href="mailto:pratyush1002@gmail.com">
+          </motion.a>
+          <motion.a variants={followVariants} href="https://github.com/MightyThinker" target="_blank" rel="noopener noreferrer">
+            <img src='https://img.icons8.com/fluency/30/github.png' alt='GitHub' />
+          </motion.a>
+          <motion.a variants={followVariants} href="mailto:pratyush1002@gmail.com">
             <img src='https://img.icons8.com/fluency/30/gmail.png' alt='E-Mail' />
-          </a>
-          <a href="https://www.instagram.com/_pratyush_kumar_/" target="_blank" rel="noopener noreferrer">
+          </motion.a>
+          <motion.a variants={followVariants} href="https://www.instagram.com/_pratyush_kumar_/" target="_blank" rel="noopener noreferrer">
             <img src='https://img.icons8.com/fluency/30/instagram-new.png' alt='Instagram' />
-          </a>
-          <div className="follow-text-container">
+          </motion.a>
+          <motion.div variants={followVariants} className="follow-text-container">
             <div className="follow-text">FOLLOW ME</div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Speech Bubble */}
         <SpeechBubble />
 
         {/* Download Resume */}
-        <a href="https://drive.google.com/file/d/1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-          <div className='download-btn' >
+        <a href="https://drive.google.com/file/d/1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q/view?usp=sharing" className='downoad-link' target="_blank" rel="noopener noreferrer">
+          <motion.div whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.75 }} className='download-btn' >
             <img src='https://img.icons8.com/fluency/30/resume.png' alt='Download Resume' />
             RÉSUMÉ
-          </div>
+          </motion.div>
         </a>
 
         {/* Contact Button Rotating */}
         <a href="#contacts" className='contact-link'>
-          <div className="contact-button">
+          <motion.div
+            animate={{ rotate: [0,360] }}
+            transition={{ duration: 10, ease: "linear", repeat: Infinity }}
+            className="contact-button">
             <svg viewBox="0 0 200 200" width="150" height="150">
               <circle cx="100" cy="100" r="90" fill="pink" />
               <path
@@ -98,10 +120,10 @@ export default function Introduction() {
                 <polyline points="9 6 18 6 18 15" />
               </svg>
             </div>
-          </div>
+          </motion.div>
         </a>
 
-      </div>
+      </motion.div>
 
       {/* 3D Image Background */}
       <div className="bgImg">
