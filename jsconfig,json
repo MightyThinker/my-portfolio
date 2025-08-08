@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@contacts/*": ["src/components/contacts/*"],
+      "@education/*": ["src/components/education/*"],
+      "@experience/*": ["src/components/experience/*"],
+      "@introduction/*": ["src/components/introduction/*"],
+      "@projects/*": ["src/components/projects/*"],
+      "@reusable/*": ["src/components/reusable/*"],
+      "@skills/*": ["src/components/skills/*"]
+    }
+  },
+  "include": ["src"]
+}

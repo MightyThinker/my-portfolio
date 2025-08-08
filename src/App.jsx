@@ -1,11 +1,11 @@
-import React from 'react'
-import './App.css'
-import Introduction from './components/introduction/Introduction';
-import Skills from './components/skills/Skills';
-import Experience from './components/experience/Experience';
-import Projects from './components/projects/Projects';
-import Education from './components/education/Education';
-import Contacts from './components/contacts/Contacts';
+import React from 'react';
+import './App.css';
+import Introduction from '@introduction/Introduction';
+import Skills from '@skills/Skills';
+import Experience from '@experience/Experience';
+import Projects from '@projects/Projects';
+import Education from '@education/Education';
+import Contacts from '@contacts/Contacts';
 
 function App() {
 

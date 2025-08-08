@@ -2,11 +2,24 @@ import React from 'react'
 import './Introduction.css';
 import SpeechBubble from './SpeechBubble';
 import { motion } from 'motion/react';
+import { useSectionInView } from '@reusable/useSectionInView';
 
 export default function Introduction() {
 
+  const { ref, controls } = useSectionInView({ threshold: 0.3 });
+
+  const iSectionLeft = {
+    hidden : { x: -100, opacity: 0 },
+    visible : { x: 0, opacity: 1, transition : { duration: 1, ease: "easeInOut" } }
+  }
+
+  const iSectionRight = {
+    hidden : { x: 100, opacity: 0 },
+    visible : { x:0, opacity:1, transition : { duration: 1, ease: "easeInOut" } }
+  }
+
   // Follow Social Profile Variants
-  const followVariants = {
+  const socialProfileVariants = {
     initial : {
       y : -100,
       opacity:0,
@@ -23,15 +36,15 @@ export default function Introduction() {
   };
 
   return (
-    <div className="introduction">
+    <div ref={ref} className="introduction">
 
       {/* Left Section */}
-      <motion.div animate={{ x:[-100,0]}} transition={{ duration: 1,ease: "easeInOut" }} className="iSection left">
+      <motion.div variants={iSectionLeft} initial="hidden" animate={controls} className="iSection left">
 
         {/* Intro */}
-        <h1 animate={{ x:[-100,0]}} transition={{ duration: 1,ease: "easeInOut" }} className="iTitle">
-          I'm <br/>
-          <span>Pratyush Kumar!</span>
+        <h1 className="iTitle">
+          Hi There, <br/>
+          <span>I'm Pratyush Kumar!</span>
         </h1>
 
         {/* Professional Summary */}
@@ -52,23 +65,23 @@ export default function Introduction() {
       </motion.div>
 
       {/* Right Section */}
-      <motion.div animate={{ x:[100,0]}} transition={{ duration: 1,ease: "easeInOut" }} className="iSection right">
+      <motion.div variants={iSectionRight} initial="hidden" animate={controls} className="iSection right">
 
         {/* Social Profile Section */}
-        <motion.div variants={followVariants} initial="initial" animate="animate" className="social-prof">
-          <motion.a variants={followVariants} href="https://www.linkedin.com/in/mighty-thinker/" target="_blank" rel="noopener noreferrer">
+        <motion.div variants={socialProfileVariants} initial="initial" animate="animate" className="social-prof">
+          <motion.a variants={socialProfileVariants} href="https://www.linkedin.com/in/mighty-thinker/" target="_blank" rel="noopener noreferrer">
             <img src='https://img.icons8.com/fluency/30/linkedin.png' alt='LinkedIn' />
           </motion.a>
-          <motion.a variants={followVariants} href="https://github.com/MightyThinker" target="_blank" rel="noopener noreferrer">
+          <motion.a variants={socialProfileVariants} href="https://github.com/MightyThinker" target="_blank" rel="noopener noreferrer">
             <img src='https://img.icons8.com/fluency/30/github.png' alt='GitHub' />
           </motion.a>
-          <motion.a variants={followVariants} href="mailto:pratyush1002@gmail.com">
+          <motion.a variants={socialProfileVariants} href="mailto:pratyush1002@gmail.com">
             <img src='https://img.icons8.com/fluency/30/gmail.png' alt='E-Mail' />
           </motion.a>
-          <motion.a variants={followVariants} href="https://www.instagram.com/_pratyush_kumar_/" target="_blank" rel="noopener noreferrer">
+          <motion.a variants={socialProfileVariants} href="https://www.instagram.com/_pratyush_kumar_/" target="_blank" rel="noopener noreferrer">
             <img src='https://img.icons8.com/fluency/30/instagram-new.png' alt='Instagram' />
           </motion.a>
-          <motion.div variants={followVariants} className="follow-text-container">
+          <motion.div variants={socialProfileVariants} className="follow-text-container">
             <div className="follow-text">FOLLOW ME</div>
           </motion.div>
         </motion.div>
