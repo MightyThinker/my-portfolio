@@ -59,6 +59,8 @@
     color: #ddd;
     font-size: 0.875rem;
     padding: 1rem 0rem;
+    text-align: justify;
+    text-align-last: left;
 }
 
 .scroll {

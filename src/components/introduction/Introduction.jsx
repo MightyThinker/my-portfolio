@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import './Introduction.css';
 import SpeechBubble from './SpeechBubble';
 import { motion } from 'motion/react';
 import { useSectionInView } from '@reusable/useSectionInView';
+import { Canvas } from '@react-three/fiber';
+import Shape from './Shape';
 
 export default function Introduction() {
 
@@ -90,7 +92,7 @@ export default function Introduction() {
         <SpeechBubble />
 
         {/* Download Resume */}
-        <a href="https://drive.google.com/file/d/1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q/view?usp=sharing" className='downoad-link' target="_blank" rel="noopener noreferrer">
+        <a href="/Pratyush_FullStack_Profile_Updated.pdf" download={"Pratyush_FullStack_Resume.pdf"} className='downoad-link' target="_blank" rel="noopener noreferrer">
           <motion.div whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.75 }} className='download-btn' >
             <img src='https://img.icons8.com/fluency/30/resume.png' alt='Download Resume' />
             RÉSUMÉ
@@ -140,6 +142,11 @@ export default function Introduction() {
 
       {/* 3D Image Background */}
       <div className="bgImg">
+        <Canvas>
+          <Suspense fallback="Loading...">
+            <Shape />
+          </Suspense>
+        </Canvas>
         <div className="intr-img">
           <img src="/Pratyush_NoBG.png" alt="Pratyush_Photo" />
         </div>
