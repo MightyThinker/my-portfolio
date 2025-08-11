@@ -1,1 +1,36 @@
-.skills {}
+.skills {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+.sSection {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+
+/* Larger Desktops */
+@media (max-width: 1536px) {}
+
+/* Desktops */
+@media (max-width: 1280px) {}
+
+/* Tablets */
+@media (max-width: 1024px) {}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .skills {
+        flex-direction: column;
+    }
+
+    .sSection {
+        width: 100%;
+        border: 1px solid green;
+    }
+}

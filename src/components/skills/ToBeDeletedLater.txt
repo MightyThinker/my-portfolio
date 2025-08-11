@@ -1,0 +1,194 @@
+
+// Common Function to load each group of 3d logo
+const LogoCell = ({ children }) => (
+    <div className="logo-cell">
+        <Canvas shadows >
+            <Suspense fallback={"Loading..."}>
+                <Stage environment={'forest'} intensity={0.5} >
+                    {children}
+                </Stage>
+                <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={10} />
+                <PerspectiveCamera position={[0, 0, 1]} zoom={0.6} makeDefault />
+            </Suspense>
+            
+        </Canvas>
+    </div>
+);
+
+
+{/* <div className="logo-grid"> */}
+                {/* Java Logo */}
+                {/* <LogoCell>
+                    <JavaLogo scale={4} />
+                </LogoCell> */}
+
+                {/* Spring Boot Logo */}
+                {/* <LogoCell>
+                    <SpringBootLogo scale={2.5} />
+                </LogoCell> */}
+
+                {/* MySQL Logo */}
+                {/* <LogoCell>
+                    <MySQLLogo scale={2.2} />
+                </LogoCell> */}
+
+                {/* JavaScript Logo */}
+                {/* <LogoCell>
+                    <JavaScriptLogo scale={2.25} />
+                </LogoCell> */}
+
+                {/* React Logo */}
+                {/* <LogoCell>
+                    <ReactLogo scale={0.7} />
+                </LogoCell> */}
+
+                {/* Kafka Logo */}
+                {/* <LogoCell>
+                    <KafkaLogo scale={2.5} />
+                </LogoCell> */}
+
+                {/* AWS Logo */}
+                {/* <LogoCell>
+                    <AwsLogo scale={1} />
+                </LogoCell> */}
+            {/* </div> */}
+
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 7.5rem);
+    grid-template-rows: repeat(3, 7.5rem);
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-cell {
+    width: 7.5rem;
+    height: 7.5rem;
+    background: #DB8B9E;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+
+-----------------------------------------------------------------------------------------------------
+Testing Code
+-----------------------------------------------------------------------------------------------------
+
+// LogoContainer.jsx
+import React, { Suspense, useRef, useEffect, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Center, OrbitControls, PerspectiveCamera, RoundedBox } from "@react-three/drei";
+
+// Your model imports (gltfjsx or useGLTF components)
+import { SpringBootLogo } from "./SpringBootLogo";
+import { ReactLogo } from "./ReactLogo";
+import { AwsLogo } from "./AwsLogo";
+import { KafkaLogo } from "./KafkaLogo";
+import { JavaLogo } from "./JavaLogo";
+import { MySQLLogo } from "./MySQLLogo";
+import { JavaScriptLogo } from "./JavaScriptLogo";
+
+/* ---------- A badge + rotating logo component ---------- */
+function LogoWithBadge({ children, speed = 0.015, badgeSize = [5.5, 5.5, 0.2], ...props }) {
+    const rotRef = useRef();
+    useFrame(() => {
+        if (rotRef.current) rotRef.current.rotation.y += speed;
+    });
+
+    return (
+        <group {...props}>
+            {/* static rounded badge behind the logo */}
+            <RoundedBox args={badgeSize} radius={0.2} smoothness={6} position={[0, 0, -2]}>
+  <meshStandardMaterial color="#f5f5f5" roughness={0.5} metalness={0.2} />
+</RoundedBox>
+
+            {/* rotating logo sits above the badge; CenteredLogo recenters it */}
+            <group ref={rotRef} position={[0, 0, 0.3]}>
+                <Center>{children}</Center>
+            </group>
+        </group>
+    );
+}
+
+/* ---------- Main container with responsive grid logic ---------- */
+export default function LogoContainer({ className = "", style = {} }) {
+    // ref to the parent DOM element to measure width
+    const containerRef = useRef(null);
+    const [columns, setColumns] = useState(3);
+
+    // decide number of columns from container width (responsive)
+    useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+
+        const ro = new ResizeObserver((entries) => {
+            const w = entries[0].contentRect.width;
+            // tweak breakpoints to match your UI
+            if (w < 420) setColumns(1);
+            else if (w < 800) setColumns(2);
+            else setColumns(3);
+        });
+
+        ro.observe(el);
+        return () => ro.disconnect();
+    }, []);
+
+    const logoData = [
+        { component: <JavaLogo scale={4} />, name: "Java" },
+        { component: <SpringBootLogo scale={2.5} />, name: "Spring Boot" },
+        { component: <MySQLLogo scale={2.2} />, name: "MySQL" },
+        { component: <JavaScriptLogo scale={2.25} />, name: "JavaScript" },
+        { component: <ReactLogo scale={0.7} />, name: "React" },
+        { component: <KafkaLogo scale={2.5} />, name: "Kafka" },
+        { component: <AwsLogo scale={1} />, name: "AWS" },
+    ];
+
+    const rows = Math.ceil(logoData.length / columns);
+    const spacingX = 6; // horizontal gap in 3D units
+    const spacingY = 6; // vertical gap in 3D units
+
+    // camera distance: adapt to number of columns/rows so items fit
+    const cameraZ = Math.max(18, Math.max(columns, rows) * 8 + 5);
+
+    return (
+        <div
+            ref={containerRef}
+            className={`logo-panel ${className}`}
+            style={{ width: "100%", height: "100%", minHeight: 300, ...style }}
+        >
+            <Canvas style={{ width: "100%", height: "100%" }} shadows camera={{ position: [0, 0, cameraZ], fov: 50 }}>
+                <Suspense fallback={null}>
+                    {/* ambient + directional lights (simple and stable) */}
+                    <ambientLight intensity={0.6} />
+                    <directionalLight position={[10, 10, 20]} intensity={0.9} castShadow shadow-mapSize-width={1024} shadow-mapSize-height={1024} />
+
+                    {/* render grid */}
+                    <group>
+                        {logoData.map((logo, i) => {
+                            const row = Math.floor(i / columns);
+                            const col = i % columns;
+                            // center grid on origin
+                            const x = col * spacingX - ((columns - 1) * spacingX) / 2;
+                            const y = -row * spacingY + ((rows - 1) * spacingY) / 2;
+                            return (
+                                <LogoWithBadge key={logo.name} position={[x, y, 0]}>
+                                    {logo.component}
+                                </LogoWithBadge>
+                            );
+                        })}
+                    </group>
+
+                    {/* fixed camera & disable manual rotation */}
+                    <PerspectiveCamera makeDefault position={[0, 0, cameraZ]} />
+                    <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
+                </Suspense>
+            </Canvas>
+        </div>
+    );
+}
