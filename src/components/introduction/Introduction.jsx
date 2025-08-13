@@ -6,21 +6,25 @@ import { useSectionInView } from '@reusable/useSectionInView';
 import { Canvas } from '@react-three/fiber';
 import Shape from './Shape';
 
+// Main Introduction component for the landing section
 export default function Introduction() {
 
+  // Custom hook to handle section in-view animations
   const { ref, controls } = useSectionInView({ threshold: 0.3 });
 
+  // Animation variants for the left section (slide in from left)
   const iSectionLeft = {
     hidden : { x: -100, opacity: 0 },
     visible : { x: 0, opacity: 1, transition : { duration: 1, ease: "easeInOut" } }
   }
 
+  // Animation variants for the right section (slide in from right)
   const iSectionRight = {
     hidden : { x: 100, opacity: 0 },
     visible : { x:0, opacity:1, transition : { duration: 1, ease: "easeInOut" } }
   }
 
-  // Follow Social Profile Variants
+  // Animation variants for the social profile icons (fade in from top with stagger)
   const socialProfileVariants = {
     initial : {
       y : -100,
@@ -40,10 +44,10 @@ export default function Introduction() {
   return (
     <div ref={ref} className="introduction">
 
-      {/* Left Section */}
+      {/* Left Section: Greeting, summary, and scroll indicator */}
       <motion.div variants={iSectionLeft} initial="hidden" animate={controls} className="iSection left">
 
-        {/* Intro */}
+        {/* Main greeting and name */}
         <h1 className="iTitle">
           Hi There, <br/>
           <span>I'm Pratyush Kumar!</span>
@@ -57,7 +61,7 @@ export default function Introduction() {
           </p>
         </div>
 
-        {/* Scroll bar */}
+        {/* Animated scroll-down indicator */}
         <motion.a animate={{ y:[0,5], opacity:[0,1,0]}} transition={{ duration: 4, ease: "easeInOut", repeat: Infinity}} href='#skills' className='scroll'>
           <svg width="32" height="56" viewBox="0 0 32 56" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="1" y="1" width="30" height="54" rx="15" stroke="#999" stroke-width="2"/> {/* Outer rect circle */}
@@ -66,10 +70,10 @@ export default function Introduction() {
         </motion.a>
       </motion.div>
 
-      {/* Right Section */}
+      {/* Right Section: Social links, speech bubble, resume, and contact button */}
       <motion.div variants={iSectionRight} initial="hidden" animate={controls} className="iSection right">
 
-        {/* Social Profile Section */}
+        {/* Social Profile Section with animated icons and "FOLLOW ME" text */}
         <motion.div variants={socialProfileVariants} initial="initial" animate="animate" className="social-prof">
           <motion.a variants={socialProfileVariants} href="https://www.linkedin.com/in/mighty-thinker/" target="_blank" rel="noopener noreferrer">
             <img src='https://img.icons8.com/fluency/30/linkedin.png' alt='LinkedIn' />
@@ -88,10 +92,10 @@ export default function Introduction() {
           </motion.div>
         </motion.div>
 
-        {/* Speech Bubble */}
+        {/* Speech bubble component (could be a quote or message) */}
         <SpeechBubble />
 
-        {/* Download Resume */}
+        {/* Download Resume Button */}
         <a href="/Pratyush_FullStack_Profile_Updated.pdf" download={"Pratyush_FullStack_Resume.pdf"} className='downoad-link' target="_blank" rel="noopener noreferrer">
           <motion.div whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.75 }} className='download-btn' >
             <img src='https://img.icons8.com/fluency/30/resume.png' alt='Download Resume' />
@@ -99,7 +103,7 @@ export default function Introduction() {
           </motion.div>
         </a>
 
-        {/* Contact Button Rotating */}
+        {/* Rotating Contact Button with SVG text and arrow */}
         <a href="#contacts" className='contact-link'>
           <motion.div
             animate={{ rotate: [0,360] }}
@@ -140,13 +144,16 @@ export default function Introduction() {
 
       </motion.div>
 
-      {/* 3D Image Background */}
+      {/* 3D Object with Background Image Section */}
       <div className="bgImg">
+        {/* 3D Shape */}
         <Canvas>
           <Suspense fallback="Loading...">
             <Shape />
           </Suspense>
         </Canvas>
+
+        {/* Intro Image */}
         <div className="intr-img">
           <img src="/Pratyush_NoBG.png" alt="Pratyush_Photo" />
         </div>

@@ -2,6 +2,12 @@ import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'motion/react';
 
+/**
+ * SpeechBubble component displays an animated speech bubble
+ * with a typewriter effect cycling through introduction phrases.
+ * Uses Framer Motion for fade-in animation and react-type-animation
+ * for the typing effect. Includes a profile image/icon.
+ */
 export default function SpeechBubble() {
   return (
     <motion.div
@@ -15,7 +21,11 @@ export default function SpeechBubble() {
               'I am Pratyush Kumar.',
               1000, // wait 1s before starting the next sequence
               'I am a Full Stack Java Developer.',
-              1000 // wait 1s before writing another sequence"
+              1000, // wait 1s before writing another sequence
+              "This website has been created using Vite+React with framer-motion and ThreeJS.",
+              1000, // wait 1s before starting the another sequence
+              "All 3D Logos have been created using Blender 4.5.",
+              1000
             ]}
             wrapper="span"
             speed={50}
@@ -23,6 +33,7 @@ export default function SpeechBubble() {
             repeat={Infinity}
           />
         </div>
+        {/* Small Profile Icon */}
         <img src="/favicon.ico" alt="Speech Bubble" />
     </motion.div>
   )
