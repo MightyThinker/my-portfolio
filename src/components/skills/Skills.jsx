@@ -5,8 +5,15 @@ import LogoContainer from './LogoContainer';
 import { motion } from 'motion/react';
 import { useSectionInView } from '@reusable/useSectionInView';
 
+/**
+ * Skills component displays the user's technical skills and 3D logo grid.
+ * - Left section: Animated list of categorized skills.
+ * - Right section: Animated 3D logo grid (LogoContainer).
+ * Uses Framer Motion for entrance animations and a custom hook for in-view detection.
+ */
 export default function Skills() {
 
+  // Array of skill categories and their respective skills
   const mySkillSets = [
     {
       id: "sp-1",
@@ -65,20 +72,23 @@ export default function Skills() {
     }
   ];
 
-  // Animation hooks for left & right sections
+  // Animation hooks for left & right sections (triggered when in view)
   const { ref: leftRef, controls: leftControls } = useSectionInView({ threshold: 0.5 });
   const { ref: rightRef, controls: rightControls } = useSectionInView({ threshold: 0.5 });
 
+  // Animation variants for left section (fade in from top)
   const leftVariants = {
     hidden: { opacity: 0, y: -50 },
     visible: { opacity: 1, y: 0, transition: { duration: 1, when: "beforeChildren", staggerChildren: 0.25 } }
   };
 
+  // Animation variants for right section (fade in from bottom)
   const rightVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 1, when: "beforeChildren", staggerChildren: 0.25 } }
   };
 
+  // Animation variants for each skill item (fade in from left)
   const skillItemVariants = {
     hidden: { opacity: 0, x: -20 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeInOut" } }
@@ -89,7 +99,7 @@ export default function Skills() {
 
   return (
     <div className="skills">
-      {/* Left Section */}
+      {/* Left Section: Skill list with animation */}
       <motion.div 
         ref={leftRef}
         className="sSection left"
@@ -109,7 +119,7 @@ export default function Skills() {
       </motion.div>
 
 
-      {/* Right Section */}
+      {/* Right Section: 3D Logo grid with animation */}
       <motion.div ref={rightRef}
         className="sSection right"
         initial="hidden"

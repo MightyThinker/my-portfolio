@@ -55,6 +55,7 @@
     color: #ddd;
 }
 
+/* Responsive CSS Starts Below */
 /* ----------- Larger Desktops ----------- */
 @media (max-width: 1536px) {
     .sSection {

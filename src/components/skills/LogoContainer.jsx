@@ -10,15 +10,25 @@ import { JavaLogo } from "./JavaLogo";
 import { MySQLLogo } from "./MySQLLogo";
 import { JavaScriptLogo } from "./JavaScriptLogo";
 
+/**
+ * LogoContainer renders a 3x3 grid of 3D rotating technology logos,
+ * each on a rounded badge, using react-three-fiber and drei.
+ * - Responsive scaling based on container size.
+ * - Each logo rotates independently.
+ * - Lighting and camera setup for 3D effect.
+ */
 export default function LogoContainer() {
+
+    // Spacing and camera parameters for grid layout
     const spacingX = 7;
     const spacingY = 7;
     const cameraZ = 20;
-    const baseWidth = 1900; // original design width
+    const baseWidth = 1900; // original design width for scaling
 
     const containerRef = useRef(null);
     const [scalingFactor, setScalingFactor] = useState(1);
 
+    // Responsive scaling: adjust scalingFactor based on container size
     useEffect(() => {
         if (!containerRef.current) return;
 
@@ -35,6 +45,13 @@ export default function LogoContainer() {
         return () => resizeObserver.disconnect();
     }, []);
 
+    /**
+     * RotatingBadge wraps a logo in a rounded box and applies continuous rotation.
+     * @param {ReactNode} children - The logo component.
+     * @param {Array} badgeSize - Size of the badge box.
+     * @param {Array} position - Position in the grid.
+     * @param {Array} logoOffset - Offset for logo centering.
+     */
     function RotatingBadge({ children, badgeSize = [6, 6, 0.5], position, logoOffset = [0, 0] }) {
         const rotRef = useRef();
         useFrame(() => {
@@ -42,9 +59,11 @@ export default function LogoContainer() {
         });
         return (
             <group position={position}>
+                {/* Badge background */}
                 <RoundedBox args={badgeSize} radius={0.2} smoothness={6} position={[0, 0, -3]}>
                     <meshStandardMaterial color="#DB8B9B" roughness={0.7} metalness={-1} />
                 </RoundedBox>
+                {/* Rotating logo */}
                 <group ref={rotRef} position={[logoOffset[0], logoOffset[1], 0]}>
                     <Center>{children}</Center>
                 </group>
@@ -52,6 +71,7 @@ export default function LogoContainer() {
         );
     }
 
+    // List of logos with their grid positions and scale/offset adjustments
     const logos = [
         { comp: <JavaLogo scale={4.5} />, row: 0, col: 0, offset: [0.3, -0.5] },
         { comp: <SpringBootLogo scale={2.5} />, row: 0, col: 1, offset: [0, -0.7] },
@@ -66,6 +86,7 @@ export default function LogoContainer() {
         <div ref={containerRef} style={{ width: "100%", height: "100%" }}>
             <Canvas shadows camera={{ position: [0, 0, 1], fov: 50 }}>
                 <Suspense fallback={"Loading..."}>
+                    {/* Lighting for 3D effect */}
                     <ambientLight intensity={0.6} />
                     <directionalLight
                         position={[0, 0, 2]}
@@ -75,8 +96,10 @@ export default function LogoContainer() {
                         shadow-mapSize-height={1024}
                     />
 
+                    {/* Grid of rotating badges with logos */}
                     <group scale={scalingFactor}>
                         {logos.map((logo, i) => {
+                            // Calculate grid position for each logo
                             const x = logo.col * spacingX - spacingX;
                             const y = logo.row * -spacingY + spacingY;
                             return (
@@ -91,6 +114,7 @@ export default function LogoContainer() {
                         })}
                     </group>
 
+                    {/* Perspective camera for the scene */}
                     <PerspectiveCamera makeDefault position={[0, 0, cameraZ]} />
                 </Suspense>
             </Canvas>
