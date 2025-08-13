@@ -14,96 +14,86 @@ export default function LogoContainer() {
     const spacingX = 7;
     const spacingY = 7;
     const cameraZ = 20;
-    const baseWidth = 1900;
+    const baseWidth = 1900; // original design width
 
-    const [scalingFactor, setScalingFactor] = useState(
-        Math.max(1, Math.min(window.innerWidth / baseWidth, 1.3))
-    );
+    const containerRef = useRef(null);
+    const [scalingFactor, setScalingFactor] = useState(1);
 
     useEffect(() => {
-        const handleResize = () => {
-            setScalingFactor(Math.max(0.9, Math.min(window.innerWidth / baseWidth, 1.3)));
-        };
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
+        if (!containerRef.current) return;
+
+        const resizeObserver = new ResizeObserver((entries) => {
+            const { width, height } = entries[0].contentRect;
+            // Scale relative to actual container width, not window
+            const widthFactor = Math.max(0.5, Math.min(width / baseWidth, 1.3));
+            const heightFactor = Math.max(0.5, Math.min(height / (baseWidth / 2), 1.3));
+            // Use the smaller factor so it fits both width & height
+            setScalingFactor(Math.min(widthFactor, heightFactor));
+        });
+
+        resizeObserver.observe(containerRef.current);
+        return () => resizeObserver.disconnect();
     }, []);
 
-    return (
-        <Canvas shadows camera={{ position: [0, 0, 1], fov: 50 }}>
-            <Suspense fallback={"Loading..."}>
-                <ambientLight intensity={0.6} />
-                <directionalLight
-                    position={[0, 0, 2]}
-                    intensity={0.9}
-                    castShadow
-                    shadow-mapSize-width={1024}
-                    shadow-mapSize-height={1024}
-                />
-
-                <group scale={scalingFactor}>
-                    {(() => {
-                        // Inline rotating component so we can use useFrame
-                        function RotatingBadge({ children, badgeSize = [6, 6, 0.5], position, logoOffset = [0, 0] }) {
-                            const rotRef = useRef();
-                            useFrame(() => {
-                                if (rotRef.current) rotRef.current.rotation.y += 0.015;
-                            });
-                            return (
-                                <group position={position}>
-                                    <RoundedBox
-                                        args={badgeSize}
-                                        radius={0.2}
-                                        smoothness={6}
-                                        position={[0, 0, -3]}
-                                    >
-                                        <meshStandardMaterial
-                                            color="#DB8B9B"
-                                            roughness={0.7}
-                                            metalness={-1}
-                                        />
-                                    </RoundedBox>
-                                    <group ref={rotRef} position={[logoOffset[0], logoOffset[1], 0]}>
-                                        <Center>{children}</Center>
-                                    </group>
-                                </group>
-                            );
-                        }
-
-                        return (
-                            <>
-                                {/* Row 0 */}
-                                <RotatingBadge position={[0 * spacingX - spacingX, 0 * -spacingY + spacingY, 0]} logoOffset={[0.7, -0.7]}>
-                                    <JavaLogo scale={4} />
-                                </RotatingBadge>
-                                <RotatingBadge position={[1 * spacingX - spacingX, 0 * -spacingY + spacingY, 0]} logoOffset={[0, -0.7]}>
-                                    <SpringBootLogo scale={2.5} />
-                                </RotatingBadge>
-                                <RotatingBadge position={[2 * spacingX - spacingX, 0 * -spacingY + spacingY, 0]} logoOffset={[-0.7, -0.7]}>
-                                    <MySQLLogo scale={2.2} />
-                                </RotatingBadge>
-
-                                {/* Row 1 */}
-                                <RotatingBadge position={[0 * spacingX - spacingX, 1 * -spacingY + spacingY, 0]} logoOffset={[0.7, 0]}>
-                                    <JavaScriptLogo scale={2.25} />
-                                </RotatingBadge>
-                                <RotatingBadge position={[1 * spacingX - spacingX, 1 * -spacingY + spacingY, 0]} logoOffset={[0, 0]}>
-                                    <ReactLogo scale={0.7} />
-                                </RotatingBadge>
-                                <RotatingBadge position={[2 * spacingX - spacingX, 1 * -spacingY + spacingY, 0]} logoOffset={[-0.7, 0]}>
-                                    <KafkaLogo scale={2.5} />
-                                </RotatingBadge>
-
-                                {/* Row 2 (AWS centered at [1, 2nd col]) */}
-                                <RotatingBadge position={[1 * spacingX - spacingX, 2 * -spacingY + spacingY, 0]} logoOffset={[0, 0.7]}>
-                                    <AwsLogo scale={1} />
-                                </RotatingBadge>
-                            </>
-                        );
-                    })()}
+    function RotatingBadge({ children, badgeSize = [6, 6, 0.5], position, logoOffset = [0, 0] }) {
+        const rotRef = useRef();
+        useFrame(() => {
+            if (rotRef.current) rotRef.current.rotation.y += 0.01;
+        });
+        return (
+            <group position={position}>
+                <RoundedBox args={badgeSize} radius={0.2} smoothness={6} position={[0, 0, -3]}>
+                    <meshStandardMaterial color="#DB8B9B" roughness={0.7} metalness={-1} />
+                </RoundedBox>
+                <group ref={rotRef} position={[logoOffset[0], logoOffset[1], 0]}>
+                    <Center>{children}</Center>
                 </group>
+            </group>
+        );
+    }
 
-                <PerspectiveCamera makeDefault position={[0, 0, cameraZ]} />
-            </Suspense>
-        </Canvas>
+    const logos = [
+        { comp: <JavaLogo scale={4.5} />, row: 0, col: 0, offset: [0.3, -0.5] },
+        { comp: <SpringBootLogo scale={2.5} />, row: 0, col: 1, offset: [0, -0.7] },
+        { comp: <MySQLLogo scale={2.2} />, row: 0, col: 2, offset: [-0.7, -0.7] },
+        { comp: <JavaScriptLogo scale={2.25} />, row: 1, col: 0, offset: [0.3, 0] },
+        { comp: <ReactLogo scale={0.7} />, row: 1, col: 1, offset: [0, 0] },
+        { comp: <KafkaLogo scale={2.5} />, row: 1, col: 2, offset: [-0.7, 0] },
+        { comp: <AwsLogo scale={1} />, row: 2, col: 1, offset: [0, 0.3] },
+    ];
+
+    return (
+        <div ref={containerRef} style={{ width: "100%", height: "100%" }}>
+            <Canvas shadows camera={{ position: [0, 0, 1], fov: 50 }}>
+                <Suspense fallback={"Loading..."}>
+                    <ambientLight intensity={0.6} />
+                    <directionalLight
+                        position={[0, 0, 2]}
+                        intensity={0.9}
+                        castShadow
+                        shadow-mapSize-width={1024}
+                        shadow-mapSize-height={1024}
+                    />
+
+                    <group scale={scalingFactor}>
+                        {logos.map((logo, i) => {
+                            const x = logo.col * spacingX - spacingX;
+                            const y = logo.row * -spacingY + spacingY;
+                            return (
+                                <RotatingBadge
+                                    key={i}
+                                    position={[x, y, 0]}
+                                    logoOffset={logo.offset}
+                                >
+                                    {logo.comp}
+                                </RotatingBadge>
+                            );
+                        })}
+                    </group>
+
+                    <PerspectiveCamera makeDefault position={[0, 0, cameraZ]} />
+                </Suspense>
+            </Canvas>
+        </div>
     );
 }
