@@ -1,1 +1,91 @@
-.contacts {}
+.contacts {
+    height: 100%;
+    display: flex;
+}
+
+.cSection {
+    height: 100%;
+    width: 50%;
+    padding: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cTitle {
+    color: pink;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 80%;
+}
+
+input, textarea {
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.3125rem;
+    outline: none;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+label {
+    font-size: 0.8125rem;
+}
+
+.form-button {
+    background-color: #dd4c62;
+    color: white;
+    padding: 1.25rem;
+    border: none;
+    border-radius: 0.625rem;
+    cursor: pointer;
+}
+
+/* Responsive CSS Starts */
+
+/* Larger Desktops */
+@media (max-width: 1536px) {
+    
+}
+
+/* Medium Desktops */
+@media (max-width: 1280px) {
+    .form {
+        width: 100%;
+    }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .contacts {
+        flex-direction: column;
+    }
+
+    .cSection {
+        width: 100%;
+    }
+
+    .cSection:first-child {
+        height: 70%;
+    }
+
+    .cSection:last-child {
+        height: 30%;
+        padding: 2rem;
+    }
+}
