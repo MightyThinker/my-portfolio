@@ -1,6 +1,7 @@
 .contacts {
     height: 100%;
     display: flex;
+    overflow: hidden;
 }
 
 .cSection {
@@ -18,29 +19,10 @@
     color: pink;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    width: 80%;
-}
-
-input,
-textarea {
-    padding: 0.75rem;
-    border: none;
-    border-radius: 0.3125rem;
-    outline: none;
-}
-
 .form-item {
     display: flex;
     flex-direction: column;
     gap: 0.625rem;
-}
-
-label {
-    font-size: 0.8125rem;
 }
 
 .form-button {
@@ -52,33 +34,12 @@ label {
     cursor: pointer;
 }
 
-dialog {
-    border: none;
-    border-radius: 0.75rem;
-    padding: 1.5rem;
-    background-color: #ddd;
-    box-shadow: 0 0.5rem 1rem #0000004d;
-    width: max-content;
-}
-
-dialog[open] {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
-}
-
 .dialog-box.success {
     border: 0.125rem solid #4caf50;
 }
 
 .dialog-box.error {
     border: 0.125rem solid #f44336;
-}
-
-dialog::backdrop {
-    background: #00000083;
 }
 
 .dialog-content {
@@ -132,6 +93,7 @@ dialog::backdrop {
 
     .cSection {
         width: 100%;
+        padding: 1rem;
     }
 
     .cSection:first-child {
@@ -140,6 +102,6 @@ dialog::backdrop {
 
     .cSection:last-child {
         height: 30%;
-        padding: 2rem;
+        padding: 1rem;
     }
 }

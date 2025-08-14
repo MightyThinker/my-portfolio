@@ -26,11 +26,11 @@ export default function Introduction() {
 
   // Animation variants for the social profile icons (fade in from top with stagger)
   const socialProfileVariants = {
-    initial : {
+    hidden : {
       y : -100,
       opacity:0,
     },
-    animate : {
+    visible : {
       y : 0,
       opacity : 1,
       transition : {
@@ -74,16 +74,16 @@ export default function Introduction() {
       <motion.div variants={iSectionRight} initial="hidden" animate={controls} className="iSection right">
 
         {/* Social Profile Section with animated icons and "FOLLOW ME" text */}
-        <motion.div variants={socialProfileVariants} initial="initial" animate="animate" className="social-prof">
+        <motion.div variants={socialProfileVariants} initial="hidden" animate={controls} className="social-prof">
           <motion.a variants={socialProfileVariants} href="https://www.linkedin.com/in/mighty-thinker/" target="_blank" rel="noopener noreferrer">
             <img src='https://img.icons8.com/fluency/30/linkedin.png' alt='LinkedIn' />
           </motion.a>
           <motion.a variants={socialProfileVariants} href="https://github.com/MightyThinker" target="_blank" rel="noopener noreferrer">
             <img src='https://img.icons8.com/fluency/30/github.png' alt='GitHub' />
           </motion.a>
-          <motion.a variants={socialProfileVariants} href="mailto:pratyush1002@gmail.com">
+          {/* <motion.a variants={socialProfileVariants} href="mailto:pratyush1002@gmail.com">
             <img src='https://img.icons8.com/fluency/30/gmail.png' alt='E-Mail' />
-          </motion.a>
+          </motion.a> */}
           <motion.a variants={socialProfileVariants} href="https://www.instagram.com/_pratyush_kumar_/" target="_blank" rel="noopener noreferrer">
             <img src='https://img.icons8.com/fluency/30/instagram-new.png' alt='Instagram' />
           </motion.a>
