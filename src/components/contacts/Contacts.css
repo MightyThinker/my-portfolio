@@ -34,6 +34,12 @@
     cursor: pointer;
 }
 
+.cSocial {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .dialog-box.success {
     border: 0.125rem solid #4caf50;
 }

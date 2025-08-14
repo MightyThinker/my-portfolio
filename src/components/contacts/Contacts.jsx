@@ -7,6 +7,12 @@ import { useSectionInView } from '@reusable/useSectionInView';
 
 export default function Contacts() {
 
+  const myContactData = [
+    { "platform": "LinkedIn", "url": "https://www.linkedin.com/in/pratyush-kumar/", "logo": "/icons8-linkedin-50.png" },
+    { "platform": "Telegram", "url": "https://t.me/MightyThinker", "logo": "/icons8-telegram-50.png" },
+    { "platform": "Instagram", "url": "https://www.instagram.com/_pratyush_kumar_/", "logo": "/icons8-instagram-50.png" }
+  ];
+
   const { ref, controls } = useSectionInView({ threshold: 0.3 });
   const myForm = useRef();
 
@@ -126,16 +132,12 @@ export default function Contacts() {
 
           {/* Other Social Connection Option */}
           <motion.h4 className='cTitle' variants={formItem}>or, you can connect with me on</motion.h4>
-          <motion.div variants={formItem} className="social">
-            <a href="https://www.linkedin.com/in/mighty-thinker/" target="_blank" rel="noopener noreferrer">
-              <img src='/icons8-linkedin-50.png' alt='LinkedIn' />
-            </a>
-            <a href="https://t.me/MightyThinker" target="_blank" rel="noopener noreferrer">
-              <img src='/icons8-telegram-50.png' alt='Telegram' />
-            </a>
-            <a href="https://www.instagram.com/_pratyush_kumar_/" target="_blank" rel="noopener noreferrer">
-              <img src='/icons8-instagram-50.png' alt='Instagram' />
-            </a>
+          <motion.div variants={formItem} className="cSocial">
+            {myContactData.map(({ platform, url, logo }) => (
+              <a key={platform} href={url} target="_blank" rel="noopener noreferrer">
+                <img src={logo} alt={platform} />
+              </a>
+            ))}
           </motion.div>
         </motion.div>
 
