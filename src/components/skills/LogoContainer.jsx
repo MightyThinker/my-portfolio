@@ -54,11 +54,44 @@ export default function LogoContainer() {
      */
     function RotatingBadge({ children, badgeSize = [6, 6, 0.5], position, logoOffset = [0, 0] }) {
         const rotRef = useRef();
+
+        // Mouse Interactivity
+        const [hovered, setHovered] = useState(false);
+        const mouse = useRef({ x: 0, y: 0 });
+
         useFrame(() => {
-            if (rotRef.current) rotRef.current.rotation.y += 0.01;
+            if (rotRef.current) {
+                if (hovered) {
+                    rotRef.current.rotation.x = mouse.current.y * 0.3;
+                    rotRef.current.rotation.y = mouse.current.x * 0.3;
+                } else {
+                    // Idle rotation
+                    rotRef.current.rotation.y += 0.01;
+                }
+            }
         });
         return (
-            <group position={position}>
+            <group
+                position={position}
+
+                // For movement on mouse hover
+                onPointerMove={(e) => {
+                    mouse.current.x = e.clientX/5;
+                    mouse.current.y = e.clientY/5;
+                }}
+                onPointerEnter={() => setHovered(true)}
+                onPointerLeave={() => setHovered(false)}
+
+                // For movement on mouse interaction but only gives tilting effect
+                // onPointerMove={(e) => {
+                //     // Map mouse position from -1..1 range
+                //     const { x, y } = e.point;
+                //     mouse.current.x = (x / 5); 
+                //     mouse.current.y = (y / 5);
+                // }}
+                // onPointerOver={() => setHovered(true)}
+                // onPointerOut={() => setHovered(false)}
+            >
                 {/* Badge background */}
                 <RoundedBox args={badgeSize} radius={0.2} smoothness={6} position={[0, 0, -3]}>
                     <meshStandardMaterial color="#DB8B9B" roughness={0.7} metalness={-1} />
