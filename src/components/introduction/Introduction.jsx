@@ -74,18 +74,19 @@ export default function Introduction() {
       <motion.div variants={iSectionRight} initial="hidden" animate={controls} className="iSection right">
 
         {/* Social Profile Section with animated icons and "FOLLOW ME" text */}
+        {/* Image source: https://img.icons8.com/3d-fluency/30/<icon_name>.png */}
         <motion.div variants={socialProfileVariants} initial="hidden" animate={controls} className="social-prof">
           <motion.a variants={socialProfileVariants} href="https://www.linkedin.com/in/mighty-thinker/" target="_blank" rel="noopener noreferrer">
-            <img src='https://img.icons8.com/fluency/30/linkedin.png' alt='LinkedIn' />
+            <img src='/icons8-linkedin-30.png' alt='LinkedIn' />
           </motion.a>
           <motion.a variants={socialProfileVariants} href="https://github.com/MightyThinker" target="_blank" rel="noopener noreferrer">
-            <img src='https://img.icons8.com/fluency/30/github.png' alt='GitHub' />
+            <img src='/icons8-github-30.png' alt='GitHub' />
           </motion.a>
-          {/* <motion.a variants={socialProfileVariants} href="mailto:pratyush1002@gmail.com">
-            <img src='https://img.icons8.com/fluency/30/gmail.png' alt='E-Mail' />
-          </motion.a> */}
+          <motion.a variants={socialProfileVariants} href="https://t.me/MightyThinker" target="_blank" rel="noopener noreferrer">
+            <img src='/icons8-telegram-30.png' alt='Telegram' />
+          </motion.a>
           <motion.a variants={socialProfileVariants} href="https://www.instagram.com/_pratyush_kumar_/" target="_blank" rel="noopener noreferrer">
-            <img src='https://img.icons8.com/fluency/30/instagram-new.png' alt='Instagram' />
+            <img src='/icons8-instagram-30.png' alt='Instagram' />
           </motion.a>
           <motion.div variants={socialProfileVariants} className="follow-text-container">
             <div className="follow-text">FOLLOW ME</div>

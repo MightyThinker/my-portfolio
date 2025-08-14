@@ -128,10 +128,13 @@ export default function Contacts() {
           <motion.h4 className='cTitle' variants={formItem}>or, you can connect with me on</motion.h4>
           <motion.div variants={formItem} className="social">
             <a href="https://www.linkedin.com/in/mighty-thinker/" target="_blank" rel="noopener noreferrer">
-              <img src='https://img.icons8.com/fluency/40/linkedin.png' alt='LinkedIn' />
+              <img src='/icons8-linkedin-50.png' alt='LinkedIn' />
+            </a>
+            <a href="https://t.me/MightyThinker" target="_blank" rel="noopener noreferrer">
+              <img src='/icons8-telegram-50.png' alt='Telegram' />
             </a>
             <a href="https://www.instagram.com/_pratyush_kumar_/" target="_blank" rel="noopener noreferrer">
-              <img src='https://img.icons8.com/fluency/40/instagram-new.png' alt='Instagram' />
+              <img src='/icons8-instagram-50.png' alt='Instagram' />
             </a>
           </motion.div>
         </motion.div>
