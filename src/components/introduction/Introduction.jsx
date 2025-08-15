@@ -106,7 +106,7 @@ export default function Introduction() {
         {/* Animated scroll-down indicator */}
         <motion.a animate={{ y: [0, 5], opacity: [0, 1, 0] }} transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }} href='#skills' className='scroll'>
           <svg width="32" height="56" viewBox="0 0 32 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="1" y="1" width="30" height="54" rx="15" stroke="#999" stroke-width="2" /> {/* Outer rect circle */}
+            <rect x="1" y="1" width="30" height="54" rx="15" stroke="#999" strokeWidth="2" /> {/* Outer rect circle */}
             <motion.rect animate={{ y: [0, 9] }} transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }} x="14" y="9" width="4" height="9" rx="2" fill="#999" /> {/* Inner scroll wheel */}
           </svg>
         </motion.a>
