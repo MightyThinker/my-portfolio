@@ -1,1 +1,144 @@
-.education {}
+.education {
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.eSection {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.eSection.right {
+    padding: 3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.eSection.left {
+    padding: 1.5rem;
+}
+
+.eTitle {
+    font-size: 2.25rem;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    text-align: center;
+    color: pink;
+}
+
+.education-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-top: 1rem;
+}
+
+.education-item {
+    border-bottom: 1px dashed pink;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.education-item h3,
+.education-item p {
+    display: flex;
+    align-items: baseline;
+}
+
+.left-param {
+    font-weight: 600;
+    color: red;
+    min-width: 10rem;
+    flex-shrink: 0;
+    font-size: 1.15rem;
+}
+
+.right-param {
+    font-style: italic;
+    font-weight: 400;
+    color: #fff;
+    font-size: 1.1rem;
+    flex: 1;
+}
+
+/* Responsive Design Begins */
+
+/* Larger desktops */ 
+@media (max-width: 1536px) {
+    .left-param {
+        font-size: 1.1rem;
+    }
+    .right-param {
+        font-size: 1.05rem;
+    }
+}
+
+/* Medium Desktops */
+@media (max-width: 1280px) {
+    .left-param {
+        font-size: 0.95rem;
+    }
+    .right-param {
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .left-param {
+        min-width: 8rem;
+        font-size: 0.85rem;
+    }
+    .right-param {
+        font-size: 0.8rem;
+    }
+}
+
+/* Mobile */
+@media (max-width:768px) {
+    .education {
+        flex-direction: column;
+    }
+
+    .education-item h3,
+    .education-item p {
+        flex-direction: row;
+        align-items: baseline;
+    }
+
+    .eSection {
+        width: 100%;
+    }
+
+    .eSection.left {
+        max-height: 60%;
+        height: fit-content;
+        padding: 1rem;
+    }
+
+    .eSection.right {
+        max-height: 40%;
+        height: max-content;
+        padding: 2rem;
+    }
+
+
+    .left-param {
+        min-width: 6rem;
+        font-size: 0.75rem;
+    }
+
+    .right-param {
+        font-size: 0.7rem;
+    }
+
+    .education-item {
+        gap: 0.3rem;
+    }
+}
