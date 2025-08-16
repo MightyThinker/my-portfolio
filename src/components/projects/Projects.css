@@ -1,1 +1,86 @@
-.projects {}
+.projects {
+    height: 300vh;
+    position: relative;
+}
+
+.pList {
+    position: sticky;
+    top: 0;
+    display: flex;
+    height: 100vh;
+    width: max-content;
+}
+
+.pItem {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px; /* 5rem = 80px */
+}
+
+.pItem:nth-child(1) {
+    background: linear-gradient(to right, #1d0b31a0, #170927);
+}
+.pItem:nth-child(2) {
+    background: linear-gradient(to right, #170927, #27084a);
+}
+.pItem:nth-child(3) {
+    background: linear-gradient(to right, #27084a, #1d0b31a0);
+}
+
+.pImg {
+    width: 40%;
+    border-radius: 20px; /* 1.25rem = 20px */
+    overflow: hidden;
+}
+
+.pImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pAbout {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 1.25rem = 20px */
+}
+
+.pAbout h2 {
+    font-size: 40px; /* 2.5rem = 40px */
+    font-weight: 700;
+}
+
+.pAbout p {
+    font-size: 13.6px; /* 0.85rem = 13.6px */
+    font-weight: 400;
+    font-style: italic;
+}
+
+.pAbout ul {
+    list-style: disc;
+    padding: 0px 24px; /* 1.5rem = 24px */
+}
+
+.pAbout li {
+    font-size: 14.4px; /* 0.9rem = 14.4px */
+    font-weight: 300;
+}
+
+.pAbout button {
+    background-color: pink;
+    padding: 12px; /* 0.75rem = 12px */
+    border: none;
+    border-radius: 8px; /* 0.5rem = 8px */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pAbout button:hover {
+    background-color: lightpink;
+}
