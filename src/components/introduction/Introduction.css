@@ -43,8 +43,8 @@
 }
 
 .iTitle {
-    margin-top: 3.125rem;
-    font-size: 6.25rem;
+    margin-top: 50px;
+    font-size: 100px;
     color: pink;
 }
 
@@ -58,14 +58,14 @@
 
 .prof-summary p {
     color: #ddd;
-    font-size: 0.875rem;
-    padding: 1rem 0rem;
+    font-size: 14px;
+    padding: 16px 0px;
     text-align: justify;
     text-align-last: left;
 }
 
 .scroll {
-    margin-bottom: 3.125rem;
+    margin-bottom: 50px;
     width: max-content;
 }
 
@@ -77,36 +77,36 @@
 .social-prof {
     display: flex;
     flex-direction: column;
-    gap: 0.625rem;
-    padding: 0.75rem;
+    gap: 12px;
+    padding: 12px;
     background-color: #2f204e;
-    border-bottom-right-radius: 1rem;
+    border-bottom-right-radius: 10px;
 }
 
 .follow-text-container {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 20px;
+    height: 20px;
 }
 
 .follow-text {
-    font-size: 0.75rem;
+    font-size: 12px;
     background-color: #dd4c62;
     rotate: 90deg;
     width: max-content;
     height: 100%;
     transform-origin: left top;
-    transform: translateY(-1.575rem);
-    padding: 0rem 0.5rem;
+    transform: translateY(-25px);
+    padding: 0px 8px;
     display: flex;
     align-items: center;
-    border-bottom-right-radius: 0.625rem;
+    border-bottom-right-radius: 10px;
 }
 
 .bubble-container {
     width: 50%;
     display: flex;
     align-items: end;
-    gap: 0.5rem;
+    gap: 8px;
     justify-content: space-between;
 }
 
@@ -115,14 +115,14 @@
     height: 100%;
     background-color: white;
     color: #555;
-    padding: 1.5rem;
-    font-size: 1.125rem;
-    border-radius: 1.25rem 1.25rem 0rem 1.25rem;
+    padding: 24px;
+    font-size: 18px;
+    border-radius: 20px 20px 0px 20px;
 }
 
 .bubble-container img {
-    width: 3.125rem;
-    height: 3.125rem;
+    width: 50px;
+    height: 50px;
     border-radius: 100%;
     object-fit: cover;
     background-color: #dd4c62;
@@ -137,19 +137,19 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 8px;
     color: #ddd;
-    font-size: 0.625rem;
+    font-size: 10px;
     width: 60%;
     font-weight: 700;
     background-color: #2f204e;
-    padding: 0.5rem 2rem;
-    border-radius: 0.5rem;
+    padding: 8px 32px;
+    border-radius: 8px;
     transform-origin: right center;
 }
 
 .contact-link {
-    margin-bottom: 3.125rem;
+    margin-bottom: 50px;
 }
 
 .contact-button {
@@ -157,8 +157,8 @@
 }
 
 .circleText {
-    letter-spacing: 0.188rem;
-    font-size: 1.25rem;
+    letter-spacing: 3px;
+    font-size: 20px;
 }
 
 .arrow {
@@ -168,8 +168,8 @@
     left: 0;
     right: 0;
     margin: auto;
-    width: 5rem;
-    height: 5rem;
+    width: 80px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -180,7 +180,7 @@
 /* Larger Desktops */
 @media (max-width: 1536px) {
     .iTitle {
-        font-size: 4.5rem;
+        font-size: 72px;
     }
 }
 
@@ -197,7 +197,7 @@
     }
 
     .iTitle {
-        font-size: 5.5rem;
+        font-size: 88px;
     }
 
     .prof-summary {
@@ -217,7 +217,7 @@
     }
 
     .iTitle {
-        font-size: 4.5rem;
+        font-size: 72px;
     }
 }
 
@@ -238,12 +238,12 @@
     .iSection.left {
         align-items: center;
         text-align: center;
-        gap: 2.25rem;
+        gap: 36px;
     }
 
 
     .iTitle {
-        font-size: 2.5rem;
+        font-size: 40px;
     }
 
     .prof-summary {
@@ -265,8 +265,8 @@
         bottom: 0;
         top: auto;
         right: auto;
-        border-top-right-radius: 1rem;
-        border-bottom-right-radius: 0rem;
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 0px;
     }
 
     .follow-text-container {
@@ -274,11 +274,11 @@
     }
 
     .follow-text {
-        border-bottom-right-radius: 0rem;
-        border-top-right-radius: 0.625rem;
-        padding: 0rem 0.5rem;
+        border-bottom-right-radius: 0px;
+        border-top-right-radius: 10px;
+        padding: 0px 8px;
         rotate: 270deg;
-        transform: translateY(-2.2rem) translateX(1rem);
+        transform: translateY(-35px) translateX(16px);
         transform-origin: center top;
     }
 
