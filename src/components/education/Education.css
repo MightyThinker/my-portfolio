@@ -14,17 +14,17 @@
 }
 
 .eSection.right {
-    padding: 3rem;
+    padding: 48px;
     justify-content: center;
     align-items: center;
 }
 
 .eSection.left {
-    padding: 1.5rem;
+    padding: 24px;
 }
 
 .eTitle {
-    font-size: 2.25rem;
+    font-size: 36px;
     border-bottom: 1px solid #ccc;
     width: 100%;
     text-align: center;
@@ -34,15 +34,15 @@
 .education-details {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
-    padding-top: 1rem;
+    gap: 20px;
+    padding-top: 16px;
 }
 
 .education-item {
     border-bottom: 1px dashed pink;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 4px;
 }
 
 .education-item h3,
@@ -54,16 +54,16 @@
 .left-param {
     font-weight: 600;
     color: red;
-    min-width: 10rem;
+    min-width: 160px;
     flex-shrink: 0;
-    font-size: 1.15rem;
+    font-size: 18.4px;
 }
 
 .right-param {
     font-style: italic;
     font-weight: 400;
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 17.6px;
     flex: 1;
 }
 
@@ -72,31 +72,31 @@
 /* Larger desktops */ 
 @media (max-width: 1536px) {
     .left-param {
-        font-size: 1.1rem;
+        font-size: 18px;
     }
     .right-param {
-        font-size: 1.05rem;
+        font-size: 17px;
     }
 }
 
 /* Medium Desktops */
 @media (max-width: 1280px) {
     .left-param {
-        font-size: 0.95rem;
+        font-size: 15px;
     }
     .right-param {
-        font-size: 0.9rem;
+        font-size: 14px;
     }
 }
 
 /* Tablets */
 @media (max-width: 1024px) {
     .left-param {
-        min-width: 8rem;
-        font-size: 0.85rem;
+        min-width: 128px;
+        font-size: 14px;
     }
     .right-param {
-        font-size: 0.8rem;
+        font-size: 13px;
     }
 }
 
@@ -119,26 +119,25 @@
     .eSection.left {
         max-height: 60%;
         height: fit-content;
-        padding: 1rem;
+        padding: 16px;
     }
 
     .eSection.right {
         max-height: 40%;
         height: max-content;
-        padding: 2rem;
+        padding: 32px;
     }
 
-
     .left-param {
-        min-width: 6rem;
-        font-size: 0.75rem;
+        min-width: 96px;
+        font-size: 12px;
     }
 
     .right-param {
-        font-size: 0.7rem;
+        font-size: 11px;
     }
 
     .education-item {
-        gap: 0.3rem;
+        gap: 5px;
     }
 }

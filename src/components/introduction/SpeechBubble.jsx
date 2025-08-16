@@ -23,7 +23,7 @@ export default function SpeechBubble({
           sequence={sequence}
           wrapper="span"
           speed={50}
-          style={{ fontSize: '1rem', display: 'inline-block' }}
+          style={{ fontSize: '16px', display: 'inline-block' }}
           repeat={Infinity}
         />
       </div>
