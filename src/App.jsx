@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Introduction from '@introduction/Introduction';
 import Skills from '@skills/Skills';
 import Experience from '@experience/Experience';
@@ -13,28 +12,26 @@ function App() {
     <React.Fragment>
       <div className='container'>
 
-        <section id='introduction'>
-          <Introduction></Introduction>
+        <section id='#introduction'>
+          <Introduction />
         </section>
 
-        <section id="skills">
-          <Skills></Skills>
+        <section id="#skills">
+          <Skills />
         </section>
 
-        <section id="experience">
-          <Experience></Experience>
+        <section id="#experience">
+          <Experience />
         </section>
 
-        <section id="projects">
-          <Projects></Projects>
+        <Projects />
+
+        <section id="#education">
+          <Education />
         </section>
 
-        <section id="education">
-          <Education></Education>
-        </section>
-
-        <section id="contacts">
-          <Contacts></Contacts>
+        <section id="#contacts">
+          <Contacts />
         </section>
 
       </div>
