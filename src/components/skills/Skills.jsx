@@ -79,19 +79,19 @@ export default function Skills() {
   // Animation variants for left section (fade in from top)
   const leftVariants = {
     hidden: { opacity: 0, y: -50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1, when: "beforeChildren", staggerChildren: 0.25 } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, when: "beforeChildren", staggerChildren: 0.25 } }
   };
 
   // Animation variants for right section (fade in from bottom)
   const rightVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1, when: "beforeChildren", staggerChildren: 0.25 } }
+    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeInOut" } }
   };
 
   // Animation variants for each skill item (fade in from left)
   const skillItemVariants = {
     hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeInOut" } }
+    visible: { opacity: 1, x: 0, transition: { duration: 0.25, ease: "easeInOut" } }
   };
 
 
