@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Projects.css';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useInView, useScroll, useTransform } from 'motion/react';
 
 export default function Projects() {
 
@@ -43,49 +43,123 @@ export default function Projects() {
     }
   ];
 
-  const ListItem = ({ item }) => { 
-    return(
-      <div className="pItem">
-        <div className="pImg">
+  const ref = useRef(null);
+  const [containerDistance, setContainerDistance] = useState(0);
+
+  // Get the scroll position of the container when resizing
+  useEffect(() => {
+    const calculateDistance = () => {
+      if (ref.current) {
+        const rect = ref.current.getBoundingClientRect();
+        setContainerDistance(rect.left);
+      }
+    };
+
+    calculateDistance();
+
+    window.addEventListener("resize", calculateDistance);
+
+    return () => {
+      window.removeEventListener("resize", calculateDistance);
+    };
+  }, []);
+
+  // Get the scroll position of the container
+  const { scrollYProgress } = useScroll({ target: ref });
+
+  // Calculate the x translation based on scroll position
+  const xTranslate = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, -window.innerWidth * myProjectsData.length]
+  );
+
+  // Animation
+  const imgVariant = {
+    hidden: { opacity: 0, x: -50, y: 50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut"
+      }
+    },
+  };
+
+  const aboutVariant = {
+    hidden: { opacity: 0, x: 50, y: 50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut",
+        staggerChildren: 0.25
+      }
+    }
+  };
+
+  // List item component for each project
+  const ListItem = ({ item }) => {
+    const ref = useRef();
+    const isInView = useInView(ref, { margin: "-100px" });
+    return (
+      <div className="pItem" ref={ref}>
+
+        {/* Project/Product Image */}
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={imgVariant}
+          className="pImg"
+        >
           <img src={item.image} alt={item.title} />
-        </div>
-        <div className="pAbout">
-          <h2>{item.title}</h2>
-          <p>Tech: {item.techStack.join(", ")}</p>
-          <ul>
+        </motion.div>
+
+        {/* Project/Product Details */}
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={aboutVariant}
+          className="pAbout"
+        >
+          <motion.h2 variants={aboutVariant}>{item.title}</motion.h2>
+          <motion.p variants={aboutVariant}>Tech: {item.techStack.join(", ")}</motion.p>
+          <motion.ul variants={aboutVariant}>
             {item.description.map((desc, index) => (
-              <li className='pDescItem' key={index}>{desc}</li>
+              <motion.li className='pDescItem' key={index} variants={aboutVariant}>{desc}</motion.li>
             ))}
-          </ul>
-          <a href={item.url} target="_blank" rel="noopener noreferrer">
+          </motion.ul>
+          <motion.a variants={aboutVariant} href={item.url} target="_blank" rel="noopener noreferrer">
             <button>View on GitHub</button>
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </div>
     )
   };
 
-  const ref = useRef(null);
-  const [containerDistance, setContainerDistance] = useState(0);
-  const { scrollYProgress } = useScroll({ target : ref });
-
-  useEffect(() => {
-    if(ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setContainerDistance(rect.left);
-    }
-  }, []);
-
-  const xTranslate = useTransform(scrollYProgress, [0, 1], [0, -window.innerWidth * (myProjectsData.length - 1)]);
-
   return (
     <div className="projects" ref={ref}>
-      <div style={{ width: window.innerWidth - containerDistance }} />
       <motion.div className="pList" style={{ x: xTranslate }}>
+
+        {/* This div will be the space for the projects to scroll into view */}
+        <div className='empty-space'
+          style={{
+            width: window.innerWidth - containerDistance
+          }}
+        />
+
+        {/* Here the list of all projects data */}
         {myProjectsData.map((project) => (
           <ListItem key={project.title} item={project} />
         ))}
       </motion.div>
+
+      {/* This section will be the vertical space for the projects to scroll into view and number of section tag below will be equal to (number of projects) and also change the height of .position in css file to (number of project *100vh) */}
+      <section />
       <section />
       <section />
     </div>
