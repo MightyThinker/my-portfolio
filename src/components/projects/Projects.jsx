@@ -107,14 +107,14 @@ export default function Projects() {
     const ref = useRef();
     const isInView = useInView(ref, { margin: "-100px" });
     return (
-      <div className="pItem" ref={ref}>
+      <div className="p-item" ref={ref}>
 
         {/* Project/Product Image */}
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={imgVariant}
-          className="pImg"
+          className="p-img"
         >
           <img src={item.image} alt={item.title} />
         </motion.div>
@@ -124,13 +124,13 @@ export default function Projects() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={aboutVariant}
-          className="pAbout"
+          className="p-about"
         >
           <motion.h2 variants={aboutVariant}>{item.title}</motion.h2>
           <motion.p variants={aboutVariant}>Tech: {item.techStack.join(", ")}</motion.p>
           <motion.ul variants={aboutVariant}>
             {item.description.map((desc, index) => (
-              <motion.li className='pDescItem' key={index} variants={aboutVariant}>{desc}</motion.li>
+              <motion.li key={index} variants={aboutVariant}>{desc}</motion.li>
             ))}
           </motion.ul>
           <motion.a variants={aboutVariant} href={item.url} target="_blank" rel="noopener noreferrer">
@@ -143,10 +143,10 @@ export default function Projects() {
 
   return (
     <div className="projects" ref={ref}>
-      <motion.div className="pList" style={{ x: xTranslate }}>
+      <motion.div className="p-list" style={{ x: xTranslate }}>
 
         {/* This div will be the space for the projects to scroll into view */}
-        <div className='empty-space'
+        <div className='p-empty-space'
           style={{
             width: window.innerWidth - containerDistance
           }}

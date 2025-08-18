@@ -84,30 +84,30 @@ export default function Education() {
 
   return (
     <div className="education">
-      <motion.div ref={leftRef} initial="hidden" animate={leftControls} variants={leftSectionVariants} className="eSection left">
-        <h1 className='eTitle'>Education Details</h1>
+      <motion.div ref={leftRef} initial="hidden" animate={leftControls} variants={leftSectionVariants} className="ed-section ed-left">
+        <h1 className='ed-title'>Education Details</h1>
         <div className="education-details">
           {myEducationData.map((edu, index) => (
             <motion.div variants={listVariant} key={index} className="education-item">
-              <motion.h3 variants={itemVariants} className="education-degree"><span className="left-param">Degree: </span><span className='right-param'>{edu.degree}</span></motion.h3>
-              <motion.p variants={itemVariants} className="education-institution"><span className="left-param">College: </span>
-                <a className='right-param' href={edu.institutionUrl} target="_blank" rel="noopener noreferrer">
+              <motion.h3 variants={itemVariants} className="education-degree"><span className="ed-left-param">Degree: </span><span className='ed-right-param'>{edu.degree}</span></motion.h3>
+              <motion.p variants={itemVariants} className="education-institution"><span className="ed-left-param">College: </span>
+                <a className='ed-right-param' href={edu.institutionUrl} target="_blank" rel="noopener noreferrer">
                   {edu.institution}🔗
                 </a>
               </motion.p>
-              <motion.p variants={itemVariants} className="education-affiliation"><span className="left-param">Affiliation: </span>
-                <a className='right-param' href={edu.affiliationUrl} target="_blank" rel="noopener noreferrer">
+              <motion.p variants={itemVariants} className="education-affiliation"><span className="ed-left-param">Affiliation: </span>
+                <a className='ed-right-param' href={edu.affiliationUrl} target="_blank" rel="noopener noreferrer">
                   {edu.affiliation}🔗
                 </a>
               </motion.p>
-              <motion.p variants={itemVariants} className="education-field"><span className="left-param">Area of Study: </span><span className='right-param'>{edu.field}</span></motion.p>
-              <motion.p variants={itemVariants} className="education-session"><span className="left-param">Session: </span><span className='right-param'>{edu.session}</span></motion.p>
-              <motion.p variants={itemVariants} className="education-result"><span className="left-param">Result: </span><span className='right-param'>{edu.result}</span></motion.p>
+              <motion.p variants={itemVariants} className="education-field"><span className="ed-left-param">Area of Study: </span><span className='ed-right-param'>{edu.field}</span></motion.p>
+              <motion.p variants={itemVariants} className="education-session"><span className="ed-left-param">Session: </span><span className='ed-right-param'>{edu.session}</span></motion.p>
+              <motion.p variants={itemVariants} className="education-result"><span className="ed-left-param">Result: </span><span className='ed-right-param'>{edu.result}</span></motion.p>
             </motion.div>
           ))}
         </div>
       </motion.div>
-      <motion.div ref={rightRef} initial="hidden" animate={rightControls} variants={rightSectionVariants} className="eSection right">
+      <motion.div ref={rightRef} initial="hidden" animate={rightControls} variants={rightSectionVariants} className="ed-section ed-right">
         <EducationSvg />
       </motion.div>
     </div>

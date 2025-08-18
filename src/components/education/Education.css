@@ -6,24 +6,24 @@
     align-items: center;
 }
 
-.eSection {
+.ed-section {
     height: 100%;
     width: 50%;
     display: flex;
     flex-direction: column;
 }
 
-.eSection.right {
+.ed-section.ed-right {
     padding: 48px;
     justify-content: center;
     align-items: center;
 }
 
-.eSection.left {
+.ed-section.ed-left {
     padding: 24px;
 }
 
-.eTitle {
+.ed-title {
     font-size: 36px;
     border-bottom: 1px solid #ccc;
     width: 100%;
@@ -51,7 +51,7 @@
     align-items: baseline;
 }
 
-.left-param {
+.ed-left-param {
     font-weight: 600;
     color: red;
     min-width: 160px;
@@ -59,7 +59,7 @@
     font-size: 18.4px;
 }
 
-.right-param {
+.ed-right-param {
     font-style: italic;
     font-weight: 400;
     color: #fff;
@@ -71,31 +71,31 @@
 
 /* Larger desktops */ 
 @media (max-width: 1536px) {
-    .left-param {
+    .ed-left-param {
         font-size: 18px;
     }
-    .right-param {
+    .ed-right-param {
         font-size: 17px;
     }
 }
 
 /* Medium Desktops */
 @media (max-width: 1280px) {
-    .left-param {
+    .ed-left-param {
         font-size: 15px;
     }
-    .right-param {
+    .ed-right-param {
         font-size: 14px;
     }
 }
 
 /* Tablets */
 @media (max-width: 1024px) {
-    .left-param {
+    .ed-left-param {
         min-width: 128px;
         font-size: 14px;
     }
-    .right-param {
+    .ed-right-param {
         font-size: 13px;
     }
 }
@@ -112,28 +112,28 @@
         align-items: baseline;
     }
 
-    .eSection {
+    .ed-section {
         width: 100%;
     }
 
-    .eSection.left {
+    .ed-section.ed-left {
         max-height: 60%;
         height: fit-content;
         padding: 16px;
     }
 
-    .eSection.right {
+    .ed-section.ed-right {
         max-height: 40%;
         height: max-content;
         padding: 32px;
     }
 
-    .left-param {
+    .ed-left-param {
         min-width: 96px;
         font-size: 12px;
     }
 
-    .right-param {
+    .ed-right-param {
         font-size: 11px;
     }
 

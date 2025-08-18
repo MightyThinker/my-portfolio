@@ -5,7 +5,7 @@
     overflow: hidden;
 }
 
-.cSection {
+.c-section {
     height: 100%;
     width: 50%;
     padding: 20px;
@@ -16,14 +16,14 @@
     gap: 16px;
 }
 
-.cSection:last-child {
+.c-section:last-child {
     background-color: rgba(2, 2, 45, 0.187);
     margin: 50px 0px;
     padding: 50px;
     border-radius: 50% 0px;
 }
 
-.cTitle {
+.c-title {
     color: pink;
 }
 
@@ -72,13 +72,13 @@ dialog::backdrop {
     background: #00000083;
 }
 
-.form-item {
+.c-form-item {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.form-button {
+.c-form-button {
     background-color: #dd4c62;
     color: white;
     padding: 20px;
@@ -87,21 +87,21 @@ dialog::backdrop {
     cursor: pointer;
 }
 
-.cSocial {
+.c-social {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.dialog-box.success {
+.c-dialog-box.success {
     border: 2px solid #4caf50;
 }
 
-.dialog-box.error {
+.c-dialog-box.error {
     border: 2px solid #f44336;
 }
 
-.dialog-content {
+.c-dialog-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,7 +109,7 @@ dialog::backdrop {
     gap: 16px;
 }
 
-.dialog-btn.success {
+.c-dialog-btn.success {
     background-color: #4caf50;
     border-radius: 4px;
     padding: 8px;
@@ -118,7 +118,7 @@ dialog::backdrop {
     font-weight: 600;
 }
 
-.dialog-btn.error {
+.c-dialog-btn.error {
     background-color: #f44336;
     border: none;
     border-radius: 4px;
@@ -136,7 +136,7 @@ dialog::backdrop {
 
 /* Medium Desktops */
 @media (max-width: 1280px) {
-    .form {
+    form {
         width: 100%;
     }
 }
@@ -150,16 +150,16 @@ dialog::backdrop {
         flex-direction: column;
     }
 
-    .cSection {
+    .c-section {
         width: 100%;
         padding: 16px;
     }
 
-    .cSection:first-child {
+    .c-section:first-child {
         height: 70%;
     }
 
-    .cSection:last-child {
+    .c-section:last-child {
         height: 30%;
         padding: 16px;
     }

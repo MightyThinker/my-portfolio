@@ -102,12 +102,12 @@ export default function Skills() {
       {/* Left Section: Skill list with animation */}
       <motion.div 
         ref={leftRef}
-        className="sSection left"
+        className="s-section s-left"
         initial="hidden"
         animate={leftControls}
         variants={leftVariants}
       >
-        <h1 className='sTitle'>Technical Skills</h1><br />
+        <h1 className='s-title'>Technical Skills</h1><br />
         <motion.ul className="skill-list">
           {mySkillSets.map((skillSet) => (
             <motion.li key={skillSet.id} className="skill-set" variants={skillItemVariants}>
@@ -121,7 +121,7 @@ export default function Skills() {
 
       {/* Right Section: 3D Logo grid with animation */}
       <motion.div ref={rightRef}
-        className="sSection right"
+        className="s-section s-right"
         initial="hidden"
         animate={rightControls}
         variants={rightVariants}

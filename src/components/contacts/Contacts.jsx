@@ -110,29 +110,29 @@ export default function Contacts() {
       <div ref={ref} className="contacts">
 
         {/* Left Section */}
-        <motion.div variants={cSectionLeft} animate={controls} className="cSection">
+        <motion.div variants={cSectionLeft} animate={controls} className="c-section">
 
           {/* Form */}
           <motion.form variants={formSection} animate={controls} ref={myForm} onSubmit={sendEmail}>
-            <motion.h1 variants={formItem} className='cTitle'>Let's keep in touch.</motion.h1>
-            <motion.div variants={formItem} className="form-item">
+            <motion.h1 variants={formItem} className='c-title'>Let's keep in touch.</motion.h1>
+            <motion.div variants={formItem} className="c-form-item">
               <label htmlFor="name">Name</label>
               <input name='user_name' required type="text" id="name" placeholder='John Doe' />
             </motion.div>
-            <motion.div variants={formItem} className="form-item">
+            <motion.div variants={formItem} className="c-form-item">
               <label htmlFor="email">Email</label>
               <input name='user_email' required type="email" id="email" placeholder='john.doe@example.com' />
             </motion.div>
-            <motion.div variants={formItem} className="form-item">
+            <motion.div variants={formItem} className="c-form-item">
               <label htmlFor="message">Message</label>
               <textarea name='user_message' required rows={5} id="message" placeholder='Write your message...' />
             </motion.div>
-            <motion.button variants={formItem} className="form-button">Send</motion.button>
+            <motion.button variants={formItem} className="c-form-button">Send</motion.button>
           </motion.form>
 
           {/* Other Social Connection Option */}
-          <motion.h4 className='cTitle' variants={formItem}>or, you can connect with me on</motion.h4>
-          <motion.div variants={formItem} className="cSocial">
+          <motion.h4 className='c-title' variants={formItem}>or, you can connect with me on</motion.h4>
+          <motion.div variants={formItem} className="c-social">
             {myContactData.map(({ platform, url, logo }) => (
               <a key={platform} href={url} target="_blank" rel="noopener noreferrer">
                 <img src={logo} alt={platform} />
@@ -142,7 +142,7 @@ export default function Contacts() {
         </motion.div>
 
         {/* Animated SVG */}
-        <motion.div variants={cSectionRight} animate={controls} className="cSection">
+        <motion.div variants={cSectionRight} animate={controls} className="c-section">
           <ContactSvg />
         </motion.div>
       </div>
@@ -150,7 +150,7 @@ export default function Contacts() {
       <AnimatePresence>
         <dialog
           ref={dialogRef}
-          className={`dialog-box ${dialogType}`}
+          className={`c-dialog-box ${dialogType}`}
           onClick={(e) => {
             if (e.target === dialogRef.current) {
               handleDialogClose();
@@ -158,14 +158,14 @@ export default function Contacts() {
           }}
         >
           <motion.div
-            className='dialog-content'
+            className='c-dialog-content'
             variants={dialogVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
           >
             <p>{dialogMessage}</p>
-            <button className={`dialog-btn ${dialogType}`} onClick={handleDialogClose}>OK</button>
+            <button className={`c-dialog-btn ${dialogType}`} onClick={handleDialogClose}>OK</button>
           </motion.div>
         </dialog>
       </AnimatePresence>

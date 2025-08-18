@@ -6,7 +6,7 @@
 }
 
 /* Background Image */
-.bgImg {
+.i-bg-img {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -34,7 +34,7 @@
 
 /* Left Side CSS */
 
-.iSection {
+.i-section {
     width: 50%;
     height: 100%;
     display: flex;
@@ -42,21 +42,21 @@
     justify-content: space-between;
 }
 
-.iTitle {
+.i-title {
     margin-top: 50px;
     font-size: 100px;
     color: pink;
 }
 
-.iTitle span {
+.i-title span {
     color: white;
 }
 
-.prof-summary {
+.i-prof-summary {
     width: 60%;
 }
 
-.prof-summary p {
+.i-prof-summary p {
     color: #ddd;
     font-size: 14px;
     padding: 16px 0px;
@@ -64,17 +64,17 @@
     text-align-last: left;
 }
 
-.scroll {
+.i-scroll {
     margin-bottom: 50px;
     width: max-content;
 }
 
 /* Right Side CSS */
-.iSection.right {
+.i-section.i-right {
     align-items: end;
 }
 
-.social-prof {
+.i-social-prof {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -83,12 +83,12 @@
     border-bottom-right-radius: 10px;
 }
 
-.follow-text-container {
+.i-follow-text-container {
     width: 20px;
     height: 20px;
 }
 
-.follow-text {
+.i-follow-text {
     font-size: 12px;
     background-color: #dd4c62;
     rotate: 90deg;
@@ -102,7 +102,7 @@
     border-bottom-right-radius: 10px;
 }
 
-.bubble-container {
+.i-bubble-container {
     width: 50%;
     display: flex;
     align-items: end;
@@ -110,7 +110,7 @@
     justify-content: space-between;
 }
 
-.speech-bubble {
+.i-speech-bubble {
     width: 100%;
     height: 100%;
     background-color: white;
@@ -120,7 +120,7 @@
     border-radius: 20px 20px 0px 20px;
 }
 
-.bubble-container img {
+.i-bubble-container img {
     width: 50px;
     height: 50px;
     border-radius: 100%;
@@ -128,12 +128,12 @@
     background-color: #dd4c62;
 }
 
-.downoad-link {
+.i-downoad-link {
     display: flex;
     justify-content: flex-end;
 }
 
-.download-btn {
+.i-download-btn {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -148,20 +148,20 @@
     transform-origin: right center;
 }
 
-.contact-link {
+.i-contact-link {
     margin-bottom: 50px;
 }
 
-.contact-button {
+.i-contact-button {
     position: relative;
 }
 
-.circleText {
+.i-circleText {
     letter-spacing: 3px;
     font-size: 20px;
 }
 
-.arrow {
+.i-arrow {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -179,14 +179,14 @@
 
 /* Larger Desktops */
 @media (max-width: 1536px) {
-    .iTitle {
+    .i-title {
         font-size: 72px;
     }
 }
 
 /* Desktops */
 @media (max-width: 1280px) {
-    .bgImg {
+    .i-bg-img {
         height: 60%;
         top: auto;
         bottom: 0;
@@ -196,15 +196,15 @@
         height: 100%;
     }
 
-    .iTitle {
+    .i-title {
         font-size: 88px;
     }
 
-    .prof-summary {
+    .i-prof-summary {
         width: 80%;
     }
 
-    .bubble-container {
+    .i-bubble-container {
         width: 100%;
     }
 
@@ -212,11 +212,11 @@
 
 /* Tablets */
 @media (max-width: 1024px) {
-    .bgImg {
+    .i-bg-img {
         height: 50%;
     }
 
-    .iTitle {
+    .i-title {
         font-size: 72px;
     }
 }
@@ -227,39 +227,39 @@
         flex-direction: column;
     }
 
-    .bgImg {
+    .i-bg-img {
         height: 60%;
     }
 
-    .iSection {
+    .i-section {
         width: 100%;
     }
 
-    .iSection.left {
+    .i-section.left {
         align-items: center;
         text-align: center;
         gap: 36px;
     }
 
 
-    .iTitle {
+    .i-title {
         font-size: 40px;
     }
 
-    .prof-summary {
+    .i-prof-summary {
         width: 100%;
     }
 
-    .scroll {
+    .i-scroll {
         width: 100%;
         text-align: left;
     }
 
-    .iSection.right {
+    .i-section.i-right {
         justify-content: end;
     }
 
-    .social-prof {
+    .i-social-prof {
         position: absolute;
         left: 0;
         bottom: 0;
@@ -269,11 +269,11 @@
         border-bottom-right-radius: 0px;
     }
 
-    .follow-text-container {
+    .i-follow-text-container {
         order: -1; /* moves it to the top */
     }
 
-    .follow-text {
+    .i-follow-text {
         border-bottom-right-radius: 0px;
         border-top-right-radius: 10px;
         padding: 0px 8px;
@@ -282,7 +282,7 @@
         transform-origin: center top;
     }
 
-    .bubble-container {
+    .i-bubble-container {
         display: none;;
     }
 

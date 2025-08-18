@@ -17,8 +17,8 @@ export default function SpeechBubble({
     <motion.div
       animate={{ opacity: [0, 1] }}
       transition={{ duration: 1.5 }}
-      className='bubble-container'>
-      <div className="speech-bubble">
+      className='i-bubble-container'>
+      <div className="i-speech-bubble">
         <TypeAnimation
           sequence={sequence}
           wrapper="span"

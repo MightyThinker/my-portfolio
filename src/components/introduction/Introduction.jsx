@@ -85,16 +85,16 @@ export default function Introduction() {
     <div ref={ref} className="introduction">
 
       {/* Left Section: Greeting, summary, and scroll indicator */}
-      <motion.div variants={iSectionLeft} initial="hidden" animate={controls} className="iSection left">
+      <motion.div variants={iSectionLeft} initial="hidden" animate={controls} className="i-section i-left">
 
         {/* Main greeting and name */}
-        <h1 className="iTitle">
+        <h1 className="i-title">
           Hi There, <br />
           <span>{myIntroductionData.introText}</span>
         </h1>
 
         {/* Professional Summary */}
-        <div className="prof-summary">
+        <div className="i-prof-summary">
           <h3>
             {myIntroductionData.workProfile}
           </h3>
@@ -104,7 +104,7 @@ export default function Introduction() {
         </div>
 
         {/* Animated scroll-down indicator */}
-        <motion.a animate={{ y: [0, 5], opacity: [0, 1, 0] }} transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }} href='#skills' className='scroll'>
+        <motion.a animate={{ y: [0, 5], opacity: [0, 1, 0] }} transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }} href='#skills' className='i-scroll'>
           <svg width="32" height="56" viewBox="0 0 32 56" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="1" y="1" width="30" height="54" rx="15" stroke="#999" strokeWidth="2" /> {/* Outer rect circle */}
             <motion.rect animate={{ y: [0, 9] }} transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }} x="14" y="9" width="4" height="9" rx="2" fill="#999" /> {/* Inner scroll wheel */}
@@ -113,11 +113,11 @@ export default function Introduction() {
       </motion.div>
 
       {/* Right Section: Social links, speech bubble, resume, and contact button */}
-      <motion.div variants={iSectionRight} initial="hidden" animate={controls} className="iSection right">
+      <motion.div variants={iSectionRight} initial="hidden" animate={controls} className="i-section i-right">
 
         {/* Social Profile Section with animated icons and "FOLLOW ME" text */}
         {/* Image source: https://img.icons8.com/3d-fluency/30/<icon_name>.png */}
-        <motion.div variants={socialProfileVariants} initial="hidden" animate={controls} className="social-prof">
+        <motion.div variants={socialProfileVariants} initial="hidden" animate={controls} className="i-social-prof">
           {myIntroductionData.socialProfiles.map(({ platform, url, logo }) => (
             <motion.a
               key={platform}
@@ -129,8 +129,8 @@ export default function Introduction() {
               <img src={logo} alt={platform} />
             </motion.a>
           ))}
-          <motion.div variants={socialProfileVariants} className="follow-text-container">
-            <div className="follow-text">FOLLOW ME</div>
+          <motion.div variants={socialProfileVariants} className="i-follow-text-container">
+            <div className="i-follow-text">FOLLOW ME</div>
           </motion.div>
         </motion.div>
 
@@ -138,19 +138,19 @@ export default function Introduction() {
         <SpeechBubble speechBubble={myIntroductionData.speechBubble} />
 
         {/* Download Resume Button */}
-        <a href={myIntroductionData.resume.url} download={myIntroductionData.resume.fileName} className='downoad-link' target="_blank" rel="noopener noreferrer">
-          <motion.div whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.75 }} className='download-btn' >
+        <a href={myIntroductionData.resume.url} download={myIntroductionData.resume.fileName} className='i-downoad-link' target="_blank" rel="noopener noreferrer">
+          <motion.div whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.75 }} className='i-download-btn' >
             <img src='https://img.icons8.com/fluency/30/resume.png' alt='Download Resume' />
             RÉSUMÉ
           </motion.div>
         </a>
 
         {/* Rotating Contact Button with SVG text and arrow */}
-        <a href="#contacts" className='contact-link'>
+        <a href="#contacts" className='i-contact-link'>
           <motion.div
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 10, ease: "linear", repeat: Infinity }}
-            className="contact-button">
+            className="i-contact-button">
             <svg viewBox="0 0 200 200" width="150" height="150">
               <circle cx="100" cy="100" r="90" fill="pink" />
               <path
@@ -158,16 +158,16 @@ export default function Introduction() {
                 fill="none"
                 d="M 100,100 m -60,0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0"
               />
-              <text className="circleText">
+              <text className="i-circleText">
                 <textPath href="#innerCirclePath">Hire Now •</textPath>
               </text>
-              <text className="circleText">
+              <text className="i-circleText">
                 <textPath href="#innerCirclePath" startOffset="46%">
                   Contact Me •
                 </textPath>
               </text>
             </svg>
-            <div className="arrow">
+            <div className="i-arrow">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -187,7 +187,7 @@ export default function Introduction() {
       </motion.div>
 
       {/* 3D Object with Background Image Section */}
-      <div className="bgImg">
+      <div className="i-bg-img">
         {/* 3D Shape */}
         <Canvas>
           <Suspense fallback="Loading...">
