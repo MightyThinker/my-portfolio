@@ -30,6 +30,9 @@
 .p-item:nth-child(3) {
     background: linear-gradient(to right, #27084a, #1d0b31a0);
 }
+.p-item:nth-child(4) {
+    background: linear-gradient(to right, #1d0b31a0, transparent);
+}
 
 .p-img {
     width: 40%;

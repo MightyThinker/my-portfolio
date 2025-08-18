@@ -6,6 +6,7 @@ export default function Projects() {
 
   const myProjectsData = [
     {
+      id: "prj-1",
       title: "3D Animated Portfolio",
       techStack: ["ReactJS + Vite", "Three.js", "Framer-Motion", "Blender 4.5"],
       description: [
@@ -18,6 +19,7 @@ export default function Projects() {
       url: "https://github.com/MightyThinker/my-portfolio"
     },
     {
+      id: "prj-2",
       title: "Inventory Management System",
       techStack: ["ReactJS", "ElectronJS", "Spring Boot", "H2 Database"],
       description: [
@@ -30,6 +32,7 @@ export default function Projects() {
       url: "https://github.com/MightyThinker/Inventory-Management-System"
     },
     {
+      id: "prj-3",
       title: "Video Transcription Generator",
       techStack: ["Python", "SpeechRecognition", "PyDub", "ffmpeg"],
       description: [
@@ -154,7 +157,7 @@ export default function Projects() {
 
         {/* Here the list of all projects data */}
         {myProjectsData.map((project) => (
-          <ListItem key={project.title} item={project} />
+          <ListItem key={project.title} item={project.id} />
         ))}
       </motion.div>
 
