@@ -12,25 +12,25 @@ function App() {
     <React.Fragment>
       <div className='container'>
 
-        <section id='#introduction'>
+        <section id='introduction'>
           <Introduction />
         </section>
 
-        <section id="#skills">
+        <section id="skills">
           <Skills />
         </section>
 
-        <section id="#experience">
+        <section id="experience">
           <Experience />
         </section>
 
         <Projects />
 
-        <section id="#education">
+        <section id="education">
           <Education />
         </section>
 
-        <section id="#contacts">
+        <section id="contacts">
           <Contacts />
         </section>
 
