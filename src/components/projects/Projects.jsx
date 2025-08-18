@@ -157,7 +157,7 @@ export default function Projects() {
 
         {/* Here the list of all projects data */}
         {myProjectsData.map((project) => (
-          <ListItem key={project.title} item={project.id} />
+          <ListItem key={project.id} item={project} />
         ))}
       </motion.div>
 
